@@ -1,5 +1,5 @@
 var Friends = {
-  $username: $('.username'),
+  $username: $('#chats .username'),
   $friend: $('#friends'),
   friendsList: [],
 

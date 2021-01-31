@@ -9,15 +9,15 @@ var RoomsView = {
     RoomsView.$addroom.on('click', Rooms.add);
     //RoomsView.$button.on('click', Rooms.add);
 
-
   },
 
   render: function(results) {
     results.forEach(roomObj => {
-      if (roomObj.roomname === '' || roomObj.roomname === undefined) {
+      if (roomObj.roomname === '' || !roomObj.roomname) {
         roomObj.roomname = Messages.roomname;
       }
       if (roomObj.hasOwnProperty('roomname')) {
+        console.log(roomObj.roomname)
         var escapedString = roomObj.roomname.trim();
         if (RoomsView.allRooms.indexOf(escapedString) === -1) {
           RoomsView.allRooms.push(escapedString);
@@ -49,7 +49,6 @@ var RoomsView = {
 
       });
     });
-
 
   }
 
