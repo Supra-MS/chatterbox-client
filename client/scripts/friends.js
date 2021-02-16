@@ -1,34 +1,38 @@
 var Friends = {
-  $username: $('#chats .username'),
-  $friend: $('#friends'),
   friendsList: [],
+  $username: $('#chats .chats .username'),
+  $frnd: $('#friends'),
 
   initialize: function() {
     Friends.toggleStatus();
+
   },
 
-  toggleStatus: function () {
+  toggleStatus: function() {
     $('#chats').on('click', '.username', function(event) {
-      var highlightName = $(event.target).text();
-      //do you want to add person to friends list
-      if (confirm(`Would you like to add ${highlightName} as your friend?`)) {
-        Friends.renderFriend(highlightName);
+      var username = $(event.target).text();
+      if (confirm(`Do you like to add ${username} as your friend`)) {
+        Friends.renderFriend(username);
         $('.username').each(function() {
-          var currentUser = $(this).text().trim();
-          if (currentUser === highlightName) {
-            $(this).css('color', 'red');
-            $(this).siblings().css('background-color', 'powderblue');
-            $(this).siblings().css('color', 'darkorchid');
+          var currentUsername = $(this).text().trim();
+          if (currentUsername === username) {
+            $(this).css('color', 'darkorchid');
+            $(this).siblings().css('background-color', '#e5eff1');
+            $(this).siblings().css('color', 'blue');
           }
         });
-        Friends.friendsList.push(highlightName);
+
+        Friends.friendsList.push(username);
       }
+
     });
   },
-  renderFriend: function(friend) {
-    if (Friends.friendsList.indexOf(friend) === -1) {
-      Friends.$friend.append(`<li class="friends-list">${friend}</li>`);
+
+  renderFriend: function(frnd) {
+    if (Friends.friendsList.indexOf(frnd) === -1) {
+      Friends.$frnd.append(`<li class="friends-list">${frnd}</li>`);
     }
   }
 
 };
+

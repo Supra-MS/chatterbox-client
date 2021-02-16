@@ -1,7 +1,7 @@
 var App = {
 
   $spinner: $('.spinner img'),
-
+  appdata: [],
   username: 'Anonymous',
 
   initialize: function() {
@@ -11,6 +11,7 @@ var App = {
     RoomsView.initialize();
     MessagesView.initialize();
     Friends.initialize();
+    Rooms.initialize();
 
     // Fetch initial batch of messages
     App.startSpinner();
@@ -18,28 +19,25 @@ var App = {
 
   },
 
-  fetch: function(callback = ()=>{}) {
+  fetch: function(callback = () => {}) {
     Parse.readAll((data) => {
+      App.appdata = data.results;
       // examine the response from the server request:
-      console.log(data.results); //Array(15)
-      MessagesView.render(data.results);
-      RoomsView.render(data.results);
-      RoomsView.enterRoom(data.results);
-      // Rooms.addUserRoom(data.results);
+      console.log('Data:', App.appdata);
+      MessagesView.render(App.appdata);
+      RoomsView.render(App.appdata);
       callback();
     });
   },
 
   fetchRoom: function() {
     Parse.readAll((data) => {
-      debugger;
-      // examine the response from the server request:
-      console.log('fetchRoom', data.results); //Array(15)
-      Rooms.addUserRoom(data.results);
-      console.log('after addUserRoom');
+      console.log('Fetch', data);
+      App.appdata = data.results;
+      RoomsView.enterRoom(App.appdata);
+
     });
   },
-
 
   startSpinner: function() {
     App.$spinner.show();

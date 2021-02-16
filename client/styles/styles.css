@@ -1,7 +1,6 @@
 body {
-    /* background: rgb(247, 223, 248); */
-    background: linear-gradient(124deg,  #76d586, #7edadf, #8c74d6,  #76d586, #7edadf, #9febab);
-    background-size: 1800% 1800%;
+    background: linear-gradient(124deg, #75af7e, #93cbce, #746c8b,  #88be91, #7edadf, #9febab);
+    background-size: 1700px 1800%;
     animation: rainbow 18s ease infinite;
     text-align: center;
     padding: 0 25px;
@@ -25,6 +24,7 @@ body {
     border-width: 1px 2px 2px 2px;
     color: white;
     letter-spacing: 0.10em;
+    border-radius: 10px;
 }
 
 #chats {
@@ -36,16 +36,16 @@ body {
     border: solid #ddd;
     border-width: 1px 2px 2px 2px;
     color: rgb(49, 47, 47);
-    font-size: 15px;;
-
+    font-size: 15px;
+    border-radius: 10px;
 }
-
 
 #main h1 {
     margin-top: 0;
     font-size: 35px;
     margin-bottom: 5px;
     padding: 5px;
+    text-align: center;
 }
 
 #main h1 span {
@@ -53,7 +53,7 @@ body {
 }
 
 #main ul {
-    padding-left: 20px;
+    margin-left: -40px;
 }
 
 #main .error {
@@ -63,7 +63,7 @@ body {
 }
 
 #main .success {
-    margin-top: 25px;
+    margin-top: 35px;
 }
 
 #main .success code {
@@ -73,38 +73,41 @@ body {
 }
 
 form {
-    padding: 20px;
-    padding-left: 0;
+    padding-top: 10px;
     margin-bottom: 20px;
 }
 
 form input[type=text] {
-    margin-right: 10px;
+    margin-right: 7px;
     width: 70%;
-    font-size: 12px;
+    font-size: 15px;
     padding: 5px;
+    outline: none;
 }
 
 .chat {
+    border-radius: 5px;
     padding: 5px;
     margin-bottom: 5px;
-    background-color: #eee;
+    background-color: #ddd
 }
 
 .text {
-    margin: 5px 5px;
+    margin: 5px auto;
+    width: 90%;
     font-size: 15px;
     padding: 12px;
-    background-color: rgba(213, 221, 164, 0.4)
+    background-color: rgba(238, 238, 238, 0.7);
+    border-radius: 10px;
 }
 
 .chat .username {
-    margin: 3px 5px;
+    margin: 3px 14px;
     font-weight: 800;
 }
 
 .chat:hover {
-    background-color: #ddd;
+    background-color: rgba(246, 249, 192, 0.8);
 }
 
 .spinner {
@@ -122,14 +125,17 @@ form input[type=text] {
     background-color: #0090da;
 }
 
+span {
+    font-size: 15px;
+    letter-spacing: 0.05em;
+}
 
-
-.addroom, .refresh {
+.addroom, #refresh {
     margin-top: 4px;
     margin-left: 10px;
     padding: 6px;
     border: 1px solid white;
-    background-color: rgb(110, 76, 1);
+    background-color: rgba(43, 114, 177, 0.8);
     color: white;
     text-decoration: none;
     font-weight: bolder;
@@ -137,10 +143,11 @@ form input[type=text] {
     font-size: 11px;
     outline: none;
     text-transform: uppercase;
+    border-radius: 3px;
   }
 
   .submit {
-    margin-top: 4px;
+    margin-top: 3px;
     margin-left: 10px;
     padding: 6px;
     border: 1px solid white;
@@ -152,13 +159,14 @@ form input[type=text] {
     font-size: 11px;
     outline: none;
     text-transform: uppercase;
+    border-radius: 3px;
   }
 
-  .addroom:hover, .refresh:hover, .submit:hover {
+  .addroom:hover, #refresh:hover, .submit:hover {
     margin-top: 4px;
     margin-left: 10px;
-    border: 1px dotted white;
-    background-color: rgb(86, 19, 153);
+    border: 1px solid white;
+    background-color: rgb(145, 62, 228);
     color: white;
     text-decoration: none;
   }
@@ -174,4 +182,18 @@ form input[type=text] {
     font-size: 13px;
     outline: none;
 
+  }
+
+  ul {
+    font-size: 16px;
+    margin: 0px;
+    letter-spacing: 0.1em;
+  }
+
+  .friends-list {
+    display: block;
+    margin: 2px 0px 4px 0px;
+    padding: 0.1em;
+    font-size: 15px;
+    font-weight: lighter;
   }

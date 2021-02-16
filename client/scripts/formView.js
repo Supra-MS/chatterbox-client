@@ -9,10 +9,24 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-    Messages.text = $('#message').val() || Messages.text;
-    Parse.create(Messages);
+    Messages.text = $('form').find('#message').val(); // || Messages.text
+    Messages.roomname = $('#roomname option:selected').text() || Messages.roomname;
+
+    console.log('Roomname: ', Messages.roomname, 'Text: ', Messages.text);
+
     $('#chats').empty();
-    App.fetchRoom();
+    if (Messages.roomname === 'Lobby') {
+      Parse.create(Messages, function() {
+        App.fetch(App.stopSpinner);
+      });
+      console.log(Messages, 'inside === Lobby');
+    } else {
+      Parse.create(Messages, function() {
+        // RoomsView.enterRoom();
+        App.fetchRoom();
+      });
+      console.log(Messages, 'inside === specific rooms');
+    }
     $('#message').val('');
   },
 
@@ -22,4 +36,3 @@ var FormView = {
   }
 
 };
-

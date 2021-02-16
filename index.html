@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Chatterbox</title>
+    <title>Ssb chatterbox</title>
     <link rel="stylesheet" href="client/styles/styles.css">
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/underscore/underscore.js"></script>
@@ -16,7 +16,7 @@
         if (search[search.length - 1] !== '?') {
           search += '&';
         }
-        search += 'username=' + (prompt('What is your name?') || 'Anonymous');
+        search += 'username=' + (prompt('What is your name?') || 'anonymous');
         window.location.search = search;
       }
     </script>
@@ -26,22 +26,25 @@
       <h1>Chatterbox</h1>
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
       <div id="rooms">
-        <span>Room:</span>
-        <select id="roomname">
-          <option>All Rooms</option>
+        <span>Select Room:</span>
+        <select name="dropdown" id="roomname">
+          <option value="allrooms" id="-allroom" selected disabled>--All Rooms--</option>
         </select>
         <button class="addroom">Add Room</button>
-        <button class="refresh">Refresh</button>
+        <button id="refresh">Refresh</button>
       </div>
       <form action="#" id="send" method="post">
-        <input type="text" name="message" id="message"/>
+        <input type="text" name="message" id="message" placeholder="write something..."/>
         <input type="submit" name="submit" class="submit"/>
       </form>
+
       <div>
-        <ul id="friends">My Friends:</ul>
+        <ul id="friends">Friends: (Click on user name)</ul>
       </div>
+
     </div>
     <div id="chats"></div>
+
     <script src="client/env/config.js"></script>
     <script src="client/scripts/parse.js"></script>
     <script src="client/scripts/rooms.js"></script>
@@ -57,5 +60,3 @@
     </script>
   </body>
 </html>
-
-
